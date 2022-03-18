@@ -22,7 +22,6 @@ class ProfileTestClass(TestCase):
         profile_saved = Profile.objects.all()
         self.assertTrue(len(profile_saved) > 0)
 
-
 class ProjectTestClass(TestCase):
     def setUp(self):
         self.user=User(username='chichi')
