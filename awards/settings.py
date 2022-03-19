@@ -39,6 +39,8 @@ cloudinary.config(
   api_secret = "KB5_YDQpmi4LSbmZ7fDuwz4NsR0" 
 )
 
+# CRISPY_TEMPLATE_PACK = 'uni_form'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -51,7 +53,7 @@ INSTALLED_APPS = [
     'projects',
     'bootstrap5',
     'cloudinary',
-     'crispy_forms'
+    # 'crispy_forms'
 ]
 
 MIDDLEWARE = [
