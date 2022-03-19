@@ -23,21 +23,21 @@
             <div class=" col-sm-6 col-md-6 col-lg-6">
                 <div class="card my-2 ">
                     <div class="card-header bg-transparent border-light">
-                        <p class="ml-4"> {{project.username}}</p>
+                        <p class="ml-4"> {{project.profile}}</p>
                     </div>
                    <b><h4 class="cap ml-4">  {{project.title}}</h4></b> 
                     <a style="text-decoration: none;" href="" class="btn btn-outline-light btn-sm m-1">
     
-                        <img class="image-thumbail" src="{{ project.screenshot1.url }}" width="500px" height="300px"
+                        <img class="image-thumbail" src="{{ project.image.url }}" width="500px" height="300px"
                             alt="Card image cap"></a>               
                     <div class="desc ml-4">
                         <h4>Description</h4>
-                        <p class=""> {{project.description}}</p>
+                        <p class=""> {{project.about}}</p>
     
                     </div>
                     <div class="col-auto">
                         <button class="btn btn-success"  type="submit">
-                            <a href="{{project.link}}" class="ml-4">Live Link</a>
+                            <a href="{{project.project_url}}" class="ml-4">Live Link</a>
                         </button>
                         
                     </div>

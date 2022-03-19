@@ -40,5 +40,4 @@ class Project(models.Model):
         self.save()    
 
 
-class Rate(models.Model):
-    
+# class Rate(models.Model):
