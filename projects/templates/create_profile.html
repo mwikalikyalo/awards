@@ -11,10 +11,10 @@
                     {% if current_user.id in profiles %}
                     <h1>Update profile</h1>
                     {% else %}
-                    <h1 class="text-center">Please create your profile inorder to upload images</h1>
+                    <h1 class="text-center">Please create your profile inorder to upload projects</h1>
                     {% endif %}
                     <div class="col-md-12">
-                        <form action="{% url 'update_profile' %}" method="post" enctype="multipart/form-data">
+                        <form action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {% bootstrap_form form %}
                             <input type="submit" class="btn btn-success btn-lg" value="Post">
