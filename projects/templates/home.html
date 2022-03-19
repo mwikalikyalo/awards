@@ -1,6 +1,56 @@
-{% extends 'base.html' %}
+{% extends 'base.html'%}
 {% load static %}
+{% load ratings %}
 
-{% block content %}
-  <h2>Hello World</h2>
-{% endblock %}
+{% block content%}
+<div class="container" style="padding-top: 8px; background-color: aliceblue; border-radius: 20px;">
+    <div class="container ">
+        <div class="row" style="padding-top: 8px; margin-left: 5px;">
+            <form class="card card-sm ">
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="col">
+                        <input type="search" name='item_name' placeholder="Enter keyword"
+                            class="form-control form-control">
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            {% for project in projects %}
+            <div class=" col-sm-6 col-md-6 col-lg-6">
+                <div class="card my-2 ">
+                    <div class="card-header bg-transparent border-light">
+                        <p class="ml-4"> {{project.username}}</p>
+                    </div>
+                   <b><h4 class="cap ml-4">  {{project.title}}</h4></b> 
+                    <a style="text-decoration: none;" href="" class="btn btn-outline-light btn-sm m-1">
+    
+                        <img class="image-thumbail" src="{{ project.screenshot1.url }}" width="500px" height="300px"
+                            alt="Card image cap"></a>               
+                    <div class="desc ml-4">
+                        <h4>Description</h4>
+                        <p class=""> {{project.description}}</p>
+    
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-success"  type="submit">
+                            <a href="{{project.link}}" class="ml-4">Live Link</a>
+                        </button>
+                        
+                    </div>
+                    <div class="card-body">
+                        <h2>Rate the project</h2>
+                        {% ratings project %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <h2>No Projects Uploaded....</h2>
+            {% endfor %}
+        </div>
+    </div>    
+</div>
+{% endblock%}

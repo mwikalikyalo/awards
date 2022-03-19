@@ -37,5 +37,8 @@ class Project(models.Model):
         return news
     
     def save_project(self):
-        self.save()     
+        self.save()    
 
+
+class Rate(models.Model):
+    
