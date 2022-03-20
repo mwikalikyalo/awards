@@ -43,5 +43,13 @@ class Project(models.Model):
     def save_project(self):
         self.save()    
 
+class theProfiles(models.Model):
+    user = models.CharField(max_length=40)
+    bio = models.TextField()
+    email = models.EmailField()
 
-# class Rate(models.Model):
+class theProjects(models.Model):
+    title = models.CharField(max_length=40)
+    about = models.TextField()
+
+
