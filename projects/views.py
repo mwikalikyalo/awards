@@ -5,6 +5,8 @@ from .models import theProfiles, theProjects
 from .serializer import MerchSerializer
 
 # Create your views here.
+
+
 class MerchList(APIView):
     def get(self, request, format=None):
         all_merch = theProjects.objects.all()
