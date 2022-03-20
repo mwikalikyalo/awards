@@ -4,8 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-  path('', views.home, name='home'),
-  path(r'^api/merch/$', views.MerchList.as_view()),
+  path('api/merch/', views.MerchList.as_view()),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
