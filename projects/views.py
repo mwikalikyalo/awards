@@ -55,7 +55,7 @@ def create_profile(request):
     else:
         form=ProfileForm()
 
-    return render(request,'create-profile.html',{"form":form})
+    return render(request,'create_profile.html',{"form":form})
 
 
 def profile(request):
@@ -74,12 +74,11 @@ def new_project(request):
         if form.is_valid():
             project = form.save(commit=False)
             project.username = current_user
-            # project.avatar = profile.avatar
             project.save()
     else:
         form = ProjectForm()
 
-    return render(request,'project.html',{"form":form})
+    return render(request,'post.html',{"form":form})
 
 
 class MerchList(APIView):
