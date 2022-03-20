@@ -6,6 +6,7 @@ from .serializer import MerchSerializer
 from rest_framework import status
 from .models import Profile,Project
 from .forms import CreateUserForm,ProfileForm,ProjectForm
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -18,6 +19,24 @@ def home(request):
         projects=Project.objects.all()
 
     return render(request,'home.html',{'projects':projects})
+
+
+def register(request):
+    title = 'Register - AwardIT'
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Account Created Successfully!. Check out our Email later :)')
+
+            return redirect('login')
+    else:
+        form = CreateUserForm
+    context = {
+            'title':title,
+            'form':form,
+                        }
+    return render(request, 'registration/register.html', context)
 
 
 def create_profile(request):
@@ -45,7 +64,7 @@ def profile(request):
     projects=Project.objects.filter(user=current_user)
 
     return render(request,'profile.html',{"projects":projects,"profile":profile})
-    
+
 
 class MerchList(APIView):
     def get(self, request, format=None):
