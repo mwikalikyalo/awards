@@ -87,6 +87,7 @@ class MerchList(APIView):
         serializers = MerchSerializer(all_merch, many=True)
         return Response(serializers.data, status=status.HTTP_201_CREATED)
 
+
 class MerchList(APIView):
     def get(self, request, format=None):
         all_merch = theProfiles.objects.all()

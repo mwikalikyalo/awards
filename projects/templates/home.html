@@ -3,7 +3,7 @@
 
 
 {% block content%}
-<div class="container" style="padding-top: 8px; background-color: aliceblue; border-radius: 20px;">
+<div class="container" style="padding-top: 8px; background-color: aliceblue;">
     <div class="container ">
         <div class="row" style="padding-top: 8px; margin-left: 5px;">
             <form class="card card-sm ">
@@ -31,13 +31,13 @@
                         <img class="image-thumbail" src="{{ project.image.url }}" width="500px" height="300px"
                             alt="Card image cap"></a>               
                     <div class="desc ml-4">
-                        <h4>Description</h4>
+                        <h4>About</h4>
                         <p class=""> {{project.about}}</p>
     
                     </div>
                     <div class="col-auto">
                         <button class="btn btn-success"  type="submit">
-                            <a href="{{project.project_url}}" class="ml-4">Live Link</a>
+                            <a href="{{project.project_url}}" class="ml-4">Link</a>
                         </button>
                         
                     </div>
