@@ -5,9 +5,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
   path('', views.home, name='home'),
-  path('register/', views.register, name='register'),
   path('create/profile/',views.create_profile, name='create_profile'),
   path('profiles/',views.profile, name='profile'),
+  path('new/project/',views.new_project, name='new_project'),
   path('api/merch/', views.MerchList.as_view()),
 ]
 if settings.DEBUG:
