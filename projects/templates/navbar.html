@@ -6,16 +6,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">AwardIT</a>
+          <a class="nav-link active" aria-current="page" href="/" style="font-weight: 500;
+          font-size: 35px; color: #718355;">AwardIT</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {{current_user.username}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="{%url 'profile' current_user.id%}">Profile</a></li>
-            <li><a class="dropdown-item" href="{%url 'createProfile' %}">Update profile</a></li>
-            <li><a class="dropdown-item" href="{%url 'post' %}">Post Project</a></li>
+            <li><a class="dropdown-item" href="{%url 'profile' %}">Profile</a></li>
+            <li><a class="dropdown-item" href="{%url 'create_profile' %}">Update profile</a></li>
+            <li><a class="dropdown-item" href="{%url 'new_project' %}">Post Project</a></li>
             <li><a class="dropdown-item" href="/accounts/logout">Logout</a></li>
           </ul>
         </li>
@@ -23,7 +24,7 @@
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
         </li>
       </ul>
-      <form class="d-flex" role="search" action=" {% url 'search_project' %}">
+      <form class="d-flex" role="search" action="GET">
         <input class="form-control me-2" type="search" placeholder="Search Project" aria-label="Search" name = 'project'>
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>

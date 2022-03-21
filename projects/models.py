@@ -16,15 +16,17 @@ class Profile(models.Model):
         self.save() 
 
 @receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
-
-@receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     try:
         instance.profile.save()
     except ObjectDoesNotExist:
         Profile.objects.create(user=instance)
+        
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
+
+
 
 
 class Project(models.Model):
