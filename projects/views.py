@@ -27,47 +27,47 @@ def home(request):
     return render(request,'home.html',{'projects':projects})
 
 
-# def register(request):
-#     title = 'Register - AwardIT'
-#     if request.method == 'POST':
-#         form = CreateUserForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request, 'Account Created Successfully!. Check out our Email later :)')
+def register(request):
+    title = 'Register - AwardIT'
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Account Created Successfully!. Check out our Email later :)')
 
-#             return redirect('login')
-#     else:
-#         form = CreateUserForm
-#     context = {
-#             'title':title,
-#             'form':form,
-#                         }
-#     return render(request, 'registration/registration_form.html', context)
-
-
-# def login(request):
-# 	if request.user.is_authenticated:
-# 		return redirect('home')
-# 	else:
-# 		if request.method == 'POST':
-# 			username = request.POST.get('username')
-# 			password =request.POST.get('password')
-
-# 			user = authenticate(request, username=username, password=password)
-
-# 			if user is not None:
-# 				login(request, user)
-# 				return redirect('home')
-# 			else:
-# 				messages.info(request, 'Username or password is incorrect')
-
-# 		context = {}
-# 		return render(request, 'registration/login.html', context)
+            return redirect('login')
+    else:
+        form = CreateUserForm
+    context = {
+            'title':title,
+            'form':form,
+                        }
+    return render(request, 'registration/registration_form.html', context)
 
 
-# def logout(request):  
+def login(request):
+	if request.user.is_authenticated:
+		return redirect('home')
+	else:
+		if request.method == 'POST':
+			username = request.POST.get('username')
+			password =request.POST.get('password')
 
-#     return redirect(reverse('login'))
+			user = authenticate(request, username=username, password=password)
+
+			if user is not None:
+				login(request, user)
+				return redirect('home')
+			else:
+				messages.info(request, 'Username or password is incorrect')
+
+		context = {}
+		return render(request, 'registration/login.html', context)
+
+
+def logout(request):  
+
+    return redirect(reverse('login'))
 
 
 @login_required(login_url='/accounts/login/')
