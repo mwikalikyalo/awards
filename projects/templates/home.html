@@ -1,50 +1,68 @@
 {% extends 'base.html'%}
 {% load static %}
+{% load bootstrap5 %}
 
 
 {% block content%}
-<div class="container" style="padding-top: 8px; background-color: aliceblue;">
+<d class="container" style="padding-top: 8px; background-color: aliceblue;">
     <div class="container ">
-        <div class="row" style="padding-top: 8px; margin-left: 5px;">
-            <form class="card card-sm ">
-                <div class="card-body row no-gutters align-items-center">
-                    <div class="col">
-                        <input type="search" name='item_name' placeholder="Enter keyword"
-                            class="form-control form-control">
+            <div class="row" style="padding-top: 8px; margin-left: 5px;">
+                <form class="card card-sm ">
+                    <div class="card-body row no-gutters align-items-center">
+                        <div class="col">
+                            <input type="search" name='item_name' placeholder="Enter keyword"
+                                class="form-control form-control">
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-success" type="submit">Search</button>
+                        </div>
                     </div>
-                    <div class="col-auto">
-                        <button class="btn btn-success" type="submit">Search</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
+            <div class="row">
+                {% for project in projects %}
+                <div class="card text-center">
+                    <div class="card" style="background-color: aliceblue;">
+                        <div class="card-header bg-transparent border-light">
+                            <!-- <p class="ml-4"> {{project.profile}}</p>  -->
+                        </div>
+                      <b><h4 class="cap ml-4">{{project.title}}</h4></b> 
+                        <a style="text-decoration: none;" href="" class="btn btn-outline-light btn-sm m-1">
+        
+                            <img class="image-thumbail" src="{{ project.image.url }}" width="500px" height="300px"
+                                alt="Card image cap"></a>               
+                        <div class="desc ml-4">
+                            <h4>About</h4>
+                            <p class=""> {{project.about}}</p>
+        
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-success"  type="submit">
+                                <a href="{{project.project_url}}" class="ml-4" style="text-decoration: none; color: white;">Link</a>
+                            </button>
+                            
+                        </div>
+                {% empty %}
+                <h2>No Projects Uploaded....</h2>
+                {% endfor %}
+            </div>
+        </div> 
+        <!-- Modal -->
+        <div class="modal fade" id="modal{{project.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Ratings</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+             
+              <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="row">
-            {% for project in projects %}
-            <div class=" col-sm-6 col-md-6 col-lg-6">
-                <div class="card my-2 ">
-                    <div class="card-header bg-transparent border-light">
-                        <p class="ml-4"> {{project.profile}}</p>
-                    </div>
-                   <b><h4 class="cap ml-4">  {{project.title}}</h4></b> 
-                    <a style="text-decoration: none;" href="" class="btn btn-outline-light btn-sm m-1">
-    
-                        <img class="image-thumbail" src="{{ project.image.url }}" width="500px" height="300px"
-                            alt="Card image cap"></a>               
-                    <div class="desc ml-4">
-                        <h4>About</h4>
-                        <p class=""> {{project.about}}</p>
-    
-                    </div>
-                    <div class="col-auto">
-                        <button class="btn btn-success"  type="submit">
-                            <a href="{{project.project_url}}" class="ml-4">Link</a>
-                        </button>
-                        
-                    </div>
-            {% empty %}
-            <h2>No Projects Uploaded....</h2>
-            {% endfor %}
-        </div>
-    </div>    
-</div>
-{% endblock%}
+  </div>
+</div>   
+{% endblock %}

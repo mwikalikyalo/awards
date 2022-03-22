@@ -1,7 +1,8 @@
+from dataclasses import fields
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Project, Profile
+from .models import Project, Profile, Ratings
 
 class CreateUserForm(UserCreationForm):
     class Meta:
@@ -16,4 +17,9 @@ class ProjectForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        exclude = ['username']
+        fields = ['user', 'bio', 'profile_photo', 'email']
+
+class RatingForm(forms.ModelForm):
+    class Meta:
+        model = Ratings
+        exclude = ['project', 'user', 'average']

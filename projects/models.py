@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from cloudinary.models import CloudinaryField
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 class Profile(models.Model):
@@ -17,16 +17,12 @@ class Profile(models.Model):
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
-    try:
-        instance.profile.save()
-    except ObjectDoesNotExist:
+      if created:
         Profile.objects.create(user=instance)
-        
+
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
-
-
 
 
 class Project(models.Model):
@@ -43,7 +39,15 @@ class Project(models.Model):
         return news
     
     def save_project(self):
-        self.save()    
+        self.save()   
+
+class Ratings(models.Model):
+    design = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(10.0)])
+    usability = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(10.0)])
+    content = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(10.0)])
+    project = models.ForeignKey(Project, on_delete= models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    average = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(10.0)], default = 0.0) 
 
 class theProfiles(models.Model):
     user = models.CharField(max_length=40)
