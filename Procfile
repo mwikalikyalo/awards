@@ -1,1 +1,1 @@
-web: gunicorn techawards.wsgi --log-file 
+web: gunicorn techawards.wsgi --log-file -
