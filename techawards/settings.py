@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', False)
 
 # adding config
 cloudinary.config( 
@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'techawards.wsgi.application'
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+
 # development
 if config('MODE')=="dev":
    DATABASES = {
